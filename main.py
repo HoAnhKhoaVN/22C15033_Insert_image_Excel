@@ -133,7 +133,13 @@ class InsertImageToExcel(object):
         self.ws.column_dimensions['E'].width = self.get_max_txt() + 10
 
     def deco_title(self):
-        pass
+        for row in tqdm(self.ws.iter_rows(min_row= 1, min_col=1, max_col = 5, max_row = 1), desc= "Process to Format the cells Header: "):
+            for cell in row:
+                cell.alignment = Alignment(horizontal="center", vertical="center")
+                cell.font = Font(name="Arial", size=35)
+                cell.border = Border(left=Side(style='thin'), right=Side(style='thin'), top=Side(style='thin'), bottom=Side(style='thin'))
+                cell.fill = PatternFill(start_color= "008080", end_color="008080", fill_type="solid")
+
         
     def process(self):
         # region Get title
