@@ -35,9 +35,6 @@ class InsertImageToExcel(object):
         self.lst_img = os.listdir(path = self.path_img)
         self.data :Dict = self.read_data()
 
-        self.lst_width_img = []
-
-
         # region create workspace for excel
         self.wb = Workbook()
         self.ws = self.wb.active
@@ -57,7 +54,7 @@ class InsertImageToExcel(object):
         return 150
     
     def get_max_img_width(self):
-        return sorted(self.lst_width_img, reverse= True)[0]
+        return 30
         
     def read_data(self):
         with open(self.path_text, 'r', encoding='utf-8') as f:
@@ -103,7 +100,6 @@ class InsertImageToExcel(object):
         )
 
         img_rotate, h, w = self.rotate_image(path)
-        self.lst_width_img.append(w)
 
         img_draw_text = DrawText(text, path, h, w)()
 
