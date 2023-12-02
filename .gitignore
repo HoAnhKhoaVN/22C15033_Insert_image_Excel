@@ -1,0 +1,11 @@
+draw_text/*
+output/*
+log/*
+rotate_img/*
+_pycache__/*
+*.zip
+*.png
+*.jpg
+.venv/*
+*.pyc
+*.pyo
