@@ -68,9 +68,15 @@ class InsertImageToExcel(object):
         text: Text,
         idx: int
     )->None:
-        cell_location_img = f'A{idx+PADDING}'
-        cell_location_draw_text = f'B{idx+PADDING}'
-        cell_location_text = f'C{idx+PADDING}'
+        
+        cell_location_id = f'A{idx+PADDING}'
+        cell_location_fn = f'B{idx+PADDING}'
+        cell_location_img = f'C{idx+PADDING}'
+        cell_location_draw_text = f'D{idx+PADDING}'
+        cell_location_text = f'E{idx+PADDING}'
+
+        self.ws[cell_location_id] = str(idx).zfill(4)
+        self.ws[cell_location_fn] = img_name
 
         path = os.path.join(
             self.path_img,
@@ -97,9 +103,12 @@ class InsertImageToExcel(object):
     def process(self):
 
         # region Get title
-        self.ws['A1'] = 'SRC_IMG'
-        self.ws['B1'] = 'TEXT_PRED'
-        self.ws['C1'] = 'TEXT'
+        self.ws['A1'] = 'ID'
+        self.ws['B1'] = 'FN'
+        self.ws['C1'] = 'SRC_IMG'
+        self.ws['D1'] = 'TEXT_PRED'
+        self.ws['E1'] = 'TEXT'
+
         
 
         # endregion
