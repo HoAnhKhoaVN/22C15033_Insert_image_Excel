@@ -33,8 +33,10 @@ else
     rm $FD_DRAW_TEXT/*
 fi
 
+echo "########## RUN CODE ############"
 python main.py --path_text $PATH_TEXT \
                --path_img $PATH_IMG \
                --path_excel $PATH_EXCEL
 
 echo Save successfully to $PATH_EXCEL !!!!
+echo "########## THE END ############"
