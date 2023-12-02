@@ -54,7 +54,7 @@ class InsertImageToExcel(object):
     
     def get_max_txt(self):
         # return len(self.ws[f'E{PADDING}'].width)
-        return 100
+        return 150
     
     def get_max_img_width(self):
         return sorted(self.lst_width_img, reverse= True)[0]
@@ -103,7 +103,7 @@ class InsertImageToExcel(object):
         )
 
         img_rotate, h, w = self.rotate_image(path)
-        self.lst_width_img.append(h)
+        self.lst_width_img.append(w)
 
         img_draw_text = DrawText(text, path, h, w)()
 
@@ -114,7 +114,6 @@ class InsertImageToExcel(object):
         # Điều chỉnh chiều cao của dòng để phù hợp với kích thước ảnh
         self.ws.row_dimensions[idx+PADDING].height = h
     
-
     def change_size_text(self):
         for row in tqdm(self.ws.iter_rows(min_row= PADDING, min_col=1, max_col = 2), desc= "Process to Format the cells ID, Filename: "):
             for cell in row:
@@ -129,8 +128,6 @@ class InsertImageToExcel(object):
         for row in tqdm(self.ws.iter_rows(min_row= PADDING, min_col=1, max_col = 5), desc= "Process to Format the border: "):
             for cell in row:
                 cell.border = Border(left=Side(style='thin'), right=Side(style='thin'), top=Side(style='thin'), bottom=Side(style='thin'))
-
-
 
     def adjust_col(self):
         self.ws.column_dimensions['A'].width = self.get_max_id() + 4
