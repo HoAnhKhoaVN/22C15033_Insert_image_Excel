@@ -1,13 +1,13 @@
 #####################################
 ########## START CHANGE CODE ########
 #####################################
-# PATH_TEXT='D:\\Master\\OCR_Nom\\fulllow_ocr_temple\\dataset\\final_data\\decree\\hannom\\reg_han_nom_10_anh\\sac\\rec_gt_demo.txt'
-# PATH_IMG='D:\\Master\\OCR_Nom\\fulllow_ocr_temple\\dataset\\final_data\\decree\\hannom\\reg_han_nom_10_anh\\sac\\img'
-# PATH_EXCEL='/d/Master/OCR_Nom/experiments/insert_img/output/demo_2.xlsx'
+PATH_TEXT='D:\\Master\\OCR_Nom\\fulllow_ocr_temple\\dataset\\final_data\\decree\\hannom\\reg_han_nom_10_anh\\sac\\rec_gt_demo.txt'
+PATH_IMG='D:\\Master\\OCR_Nom\\fulllow_ocr_temple\\dataset\\final_data\\decree\\hannom\\reg_han_nom_10_anh\\sac\\img'
+PATH_EXCEL='/d/Master/OCR_Nom/experiments/insert_img/output/demo_2.xlsx'
 
-PATH_TEXT='input/demo_v4.txt'
-PATH_IMG='D:\Master\OCR_Nom\fulllow_ocr_temple\dataset\final_data\decree\v3\data_sac_phong_reg_v3\reg_v4\img'
-PATH_EXCEL='output/demo_v4.xlsx'
+# PATH_TEXT='input/demo_v4.txt'
+# PATH_IMG='D:\Master\OCR_Nom\fulllow_ocr_temple\dataset\final_data\decree\v3\data_sac_phong_reg_v3\reg_v4\img'
+# PATH_EXCEL='output/demo_v4.xlsx'
 
 # Nếu có môi trường ảo, hãy chạy nó lên
 source D:/Master/OCR_Nom/fulllow_ocr_temple/.venv/Scripts/activate
