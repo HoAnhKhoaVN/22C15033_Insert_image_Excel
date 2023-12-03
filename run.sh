@@ -23,20 +23,20 @@ FD_DRAW_TEXT=draw_text
 echo "########## Set up folder ############"
 if [ ! -d $FD_ROTATE ]
 then
-    echo "Directory $FD_ROTATE DOES NOT exists!!!!" 
-    mkdir -p $FD_ROTATE
+echo "Directory $FD_ROTATE DOES NOT exists!!!!" 
+mkdir -p $FD_ROTATE
 else
-    echo "Directory $FD_ROTATE exists. Detele all images in the directory!!!!" 
-    rm $FD_ROTATE/*
+echo "Directory $FD_ROTATE exists. Detele all images in the directory!!!!" 
+rm $FD_ROTATE/*
 fi
 
 if [ ! -d $FD_DRAW_TEXT ]
 then
-    echo "Directory $FD_DRAW_TEXT DOES NOT exists!!!!" 
-    mkdir -p $FD_DRAW_TEXT
+echo "Directory $FD_DRAW_TEXT DOES NOT exists!!!!" 
+mkdir -p $FD_DRAW_TEXT
 else
-    echo "Directory $FD_DRAW_TEXT exists. Detele all images in the directory!!!!!" 
-    rm $FD_DRAW_TEXT/*
+echo "Directory $FD_DRAW_TEXT exists. Detele all images in the directory!!!!!" 
+rm $FD_DRAW_TEXT/*
 fi
 
 echo "########## RUN CODE ############"
