@@ -7,7 +7,8 @@ import numpy as np
 import math
 from .config import (
     FONT_PATH,
-    FD_DRAW_TEXT
+    FD_DRAW_TEXT,
+    PADDING_IMG
 )
 
 class DrawText:
@@ -44,21 +45,30 @@ class DrawText:
         b_line: float,
         size : float,
         first_point: List,
+        padding : int = 3
     )->List:
         kc = size // len_text
-        res = [first_point]
+        _first_point = [
+            first_point[0], #x
+            first_point[1]+ padding, #y
+        ]
+        res = [_first_point]
         point = first_point
         for _ in range(len_text-1):
             _ , y = point
 
             res_y = int(y + kc)
+            _res_y = int(y + kc) - padding
+
             if int(abs(a_line)) == 0:
                 res_x = 0
             else:
-                res_x = int((res_y - b_line)//a_line)
-            res_point  = [res_x, res_y]
+                res_x = int((_res_y - b_line)//a_line)
 
-            res.append(res_point)
+            res_point  = [res_x, res_y]
+            _res_point  = [res_x, _res_y]
+
+            res.append(_res_point)
             point = res_point
         return res
 
@@ -166,8 +176,8 @@ class DrawText:
 
             # endregion
 
-            width_x = (width - rotated_text_width * 10 / 9) // 2 # mở rộng kích thước ra xíu -> Để lúc nào cũng vẽ đủ chữ
-            height_y = (height - rotated_text_height * 10 / 9) // 2
+            width_x = (width - rotated_text_width ) // 2 # mở rộng kích thước ra xíu -> Để lúc nào cũng vẽ đủ chữ
+            height_y = (height - rotated_text_height) // 2
 
             if width_x < 0 or height_y < 0:
                 # Return font size before
@@ -207,6 +217,7 @@ class DrawText:
             b_line = b_line_left,
             size  = self.height,
             first_point = tl,
+            padding= PADDING_IMG
         )
 
         lst_point_in_top_left.append(bl)
@@ -219,6 +230,7 @@ class DrawText:
             b_line = b_line_right,
             size  = self.height,
             first_point = tr,
+            padding= PADDING_IMG
             )
         lst_point_in_top_right.append(br)
         # endregion
@@ -231,6 +243,7 @@ class DrawText:
             br = lst_point_in_top_right[idx+1]
             bl = lst_point_in_top_left[idx+1]
             lst_bbox.append([tl, tr, br, bl])
+        # print(f'lst_bbox: {lst_bbox}')
         # endregion
 
         # endregion
@@ -243,7 +256,7 @@ class DrawText:
             bbox = _bbox,
             angle= 0,
             )
-        lst_size.append(font_size)
+            lst_size.append(font_size)
         max_font_size = min(lst_size)
         # endregion
 
