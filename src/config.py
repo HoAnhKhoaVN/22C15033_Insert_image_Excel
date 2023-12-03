@@ -5,3 +5,4 @@ PADDING = 2
 LOG = 'log'
 FONT_TEXT = 48
 MAX_HEIGH = 500 #pixel
+PADDING_IMG = 1
