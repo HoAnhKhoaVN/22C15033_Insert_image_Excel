@@ -21,4 +21,5 @@ pip install -r requirements.txt
 3. Code để tách 100 ảnh vào 1 sheet name.
 4. Nhờ Phúc chia ra 5 file cần thiết để chạy.
 5. Chuyển giao code (nếu cần).
+6. Thêm code kiểm tra nếu thư mục rotate_img và draw_text rỗng thì khỏi xóa để khỏi bị lỗi.
 
