@@ -10,3 +10,4 @@ _pycache__/*
 *.pyo
 input/phan_cong_5_ban/*
 input/reg_han_nom_10_anh/*
+output_file_*
