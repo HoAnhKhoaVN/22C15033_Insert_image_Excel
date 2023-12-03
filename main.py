@@ -1,17 +1,13 @@
 import os
-import shutil
 from typing import Dict, Text
 from openpyxl import Workbook
 from openpyxl.styles import PatternFill, Alignment, Font, Border, Side
 from openpyxl.drawing.image import Image
 import PIL.Image
 from typing import Text
-from openpyxl import load_workbook
-from openpyxl.utils import get_column_letter
 from src.draw_text import DrawText
 from src.config import (
     PADDING,
-    FD_DRAW_TEXT,
     FD_ROTATE,
     LOG,
     FONT_TEXT,
@@ -20,7 +16,6 @@ from src.config import (
 from datetime import datetime
 from src.cli import get_cli
 from tqdm import tqdm
-
 
 class InsertImageToExcel(object):
     def __init__(
@@ -40,7 +35,6 @@ class InsertImageToExcel(object):
         self.wb = Workbook()
         self.ws = self.wb.active
         # endregion
-
 
     def get_max_id(self):
         # return len(self.ws[f'A{PADDING}'].width)
@@ -78,8 +72,6 @@ class InsertImageToExcel(object):
 
         return new_img, new_h, new_w
 
-
-    
     def rotate_image(
         self,
         path: Text
@@ -184,16 +176,12 @@ class InsertImageToExcel(object):
                     f.write(f'{img_name}\t{text}\t{e}\n')
                 continue
 
-
     def __call__(self):
         self.process()
         self.deco_title()
         self.change_size_text()
         self.adjust_col()
         self.wb.save(self.path_excel)
-
-
-
 
 if __name__ == '__main__':
     args = get_cli()
