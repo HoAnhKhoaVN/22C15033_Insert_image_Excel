@@ -14,7 +14,8 @@ from src.config import (
     FD_DRAW_TEXT,
     FD_ROTATE,
     LOG,
-    FONT_TEXT
+    FONT_TEXT,
+    MAX_HEIGH
 )
 from datetime import datetime
 from src.cli import get_cli
@@ -63,17 +64,38 @@ class InsertImageToExcel(object):
         data = dict(list(map(lambda x: x.strip().split('\t'), data)))
 
         return data
-    
+
     @staticmethod
+    def scale_img(img: PIL.Image)->PIL.Image:
+        h, w = img.height, img.width
+
+        ratio_h = MAX_HEIGH/ h
+
+        new_h = int(h*ratio_h)
+        new_w = int(w*ratio_h)
+
+        new_img = img.resize(size = (new_w, new_h))
+
+        return new_img, new_h, new_w
+
+
+    
     def rotate_image(
+        self,
         path: Text
     )->Image:
         _img = PIL.Image.open(path).rotate(-90, expand=True)
-        h , w = _img.height, _img.width
+
+        # region scale image
+        scaled_img, h, w = self.scale_img(
+            img = _img
+        )
+        # endregion
 
         name = os.path.basename(path)
         rotate_path  = os.path.join(FD_ROTATE, name)
-        _img.save(
+
+        scaled_img.save(
             fp = rotate_path
         )
         return Image(rotate_path), h, w
@@ -84,7 +106,6 @@ class InsertImageToExcel(object):
         text: Text,
         idx: int
     )->None:
-        
         cell_location_id = f'A{idx+PADDING}'
         cell_location_fn = f'B{idx+PADDING}'
         cell_location_img = f'C{idx+PADDING}'
@@ -140,7 +161,6 @@ class InsertImageToExcel(object):
                 cell.border = Border(left=Side(style='thin'), right=Side(style='thin'), top=Side(style='thin'), bottom=Side(style='thin'))
                 cell.fill = PatternFill(start_color= "008080", end_color="008080", fill_type="solid")
 
-        
     def process(self):
         # region Get title
         self.ws['A1'] = 'ID'
@@ -148,8 +168,6 @@ class InsertImageToExcel(object):
         self.ws['C1'] = 'SRC_IMG'
         self.ws['D1'] = 'TEXT_PRED'
         self.ws['E1'] = 'TEXT'
-
-        
 
         # endregion
         for idx, (img_name, text) in tqdm(enumerate(self.data.items()), desc = 'Progress: '):
@@ -163,7 +181,7 @@ class InsertImageToExcel(object):
                 day_time = datetime.now()
                 curr_time = day_time.strftime('%Y%m%d')
                 with open(f'{LOG}/{curr_time}.log', 'a', encoding='utf-8') as f:
-                    f.write(f'{img_name}\t{text}\n')
+                    f.write(f'{img_name}\t{text}\t{e}\n')
                 continue
 
 
