@@ -14,12 +14,12 @@ pip install -r requirements.txt
     - `PATH_IMG`: Đường dẫn đến thư mục chứa ảnh.
     - `PATH_EXCEL`: Đường dẫn đến Excel để lưu kết quả lại
 2. Thay đổi đường dẫn đến môi trường (nếu có). Nếu bạn chạy không cần môi trường ảo. Hãy đóng bình luận (#comment) và dòng `source D:/Master/OCR_Nom/fulllow_ocr_temple/.venv/Scripts/activate` để tránh xảy ra lỗi.
+3. Chạy file `run.sh` để chạy.
+```sh
+sh run.sh
+```
 
 ## Todo:
-1. Tăng kích thước của hình ảnh lên nếu quá nhỏ. (Resize)
-2. Code để lấy độ dài văn bản sau khi tăng kích thước chữ.
-3. Code để tách 100 ảnh vào 1 sheet name.
-4. Nhờ Phúc chia ra 5 file cần thiết để chạy.
-5. Chuyển giao code (nếu cần).
-6. Thêm code kiểm tra nếu thư mục rotate_img và draw_text rỗng thì khỏi xóa để khỏi bị lỗi.
+1. Code để tách 100 ảnh vào 1 sheet name.
+2. Thêm code kiểm tra nếu thư mục rotate_img và draw_text rỗng thì khỏi xóa để khỏi bị lỗi.
 
