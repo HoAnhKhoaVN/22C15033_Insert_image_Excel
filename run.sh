@@ -1,13 +1,13 @@
 #####################################
 ########## START CHANGE CODE ########
 #####################################
-# PATH_TEXT='D:\\Master\\OCR_Nom\\fulllow_ocr_temple\\dataset\\final_data\\decree\\hannom\\reg_han_nom_10_anh\\sac\\rec_gt_demo.txt'
-# PATH_IMG='D:\\Master\\OCR_Nom\\fulllow_ocr_temple\\dataset\\final_data\\decree\\hannom\\reg_han_nom_10_anh\\sac\\img'
-# PATH_EXCEL='/d/Master/OCR_Nom/experiments/insert_img/output/demo_2.xlsx'
-
 PATH_TEXT='input\phan_cong_5_ban\output_file_5.txt'
 PATH_IMG='input\img'
 PATH_EXCEL='output/output_file_5_no_space.xlsx'
+
+# PATH_TEXT='input\demo_small_text.txt'
+# PATH_IMG='input\img'
+# PATH_EXCEL='output/output_file_demo.xlsx'
 
 # Nếu có môi trường ảo, hãy chạy nó lên
 source D:/Master/OCR_Nom/fulllow_ocr_temple/.venv/Scripts/activate
